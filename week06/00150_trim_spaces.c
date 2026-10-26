@@ -3,20 +3,25 @@
 */ 
 #include<stdio.h>
 int main(){
-	char str[100],ch;
+	char str[100];
 	int r,w,flag;
 	flag=1;
-	gets(str);
-	for(r=0,w=0;r<100;r++){
+	fgets(str,sizeof str,stdin);
+	for(r=0,w=0;str[r]!='\0';r++){
+		if(str[r]=='\n'){
+			continue;
+		}
 		if(str[r]==' '){
 			if(flag==0){
-			str[w++]=str[r];
-			flag=1;
+				str[w++]=str[r];
+				flag=1;
 			}
 		}else{
 			str[w++]=str[r];
 			flag=0;
 		}
 	}
-	printf("%s",str);
+	str[w]='\0';
+	printf("%s\n",str);
+	return 0;
 }
