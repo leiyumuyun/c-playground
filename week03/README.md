@@ -1,35 +1,33 @@
 # Week 03 — 循环控制
 
-## 作业内容
+上课日期：2026-09-24
 
-本周集中练循环：用 `while` 配合取余取整逆序拆出数字，用 `for` 遍历三位数找水仙花数，用嵌套循环穷举百钱百鸡；另外一题给三点坐标算三边并判断三角形类型，用容差代替浮点相等比较。
+本周共 4 个作业，每个作业一个子目录，源码统一叫 `main.c`，编译运行方法见各子目录的 `README.md`。
 
-| 文件 | 功能 | 输入 → 输出 |
+## 作业列表
+
+| 目录 | 作业 | 内容 |
 |---|---|---|
-| `00100_reverse_digits.c` | `while` 里每次 `a%10` 取末位、`a/=10` 收缩，从低位往高位打印，即逆序输出各位数字 | 整数 → 逆序数字串 |
-| `00130_narcissistic_numbers.c` | 遍历 100–999，拆出百十个位后判断是否为水仙花数，逐行输出 | 无输入 → 所有三位水仙花数 |
-| `00132_triangle_classify.c` | 输入三个点坐标算出三边长，判断等边 / 等腰 / 等腰直角 / 直角 / 普通三角形，不能构成时输出「非三角形」，浮点比较统一用 `fabs(...) < 0.00001` 容差 | 6 个数 → 三角形类型 |
-| `00134_hundred_chickens.c` | 双重 `for` 穷举 x、y、z，满足 `x+y+z=100` 且 `5x+3y+z/3=100` 即输出（百钱百鸡） | 无输入 → 所有解 |
+| [ex01_reverse_digits/](ex01_reverse_digits/) | 逆序输出各位数字 | 读入一个整数，循环里每次取末位打印、再整除 10 把末位去掉，于是数字从低位到高位被打印出来，实现逆序。 |
+| [ex02_narcissistic_numbers/](ex02_narcissistic_numbers/) | 三位水仙花数 | 遍历 100 到 999，把每个数拆出个位、十位、百位，若 `n == a³+b³+c³` 就输出，得到所有三位水仙花数。 |
+| [ex03_triangle_classify/](ex03_triangle_classify/) | 三点坐标判定三角形类型 | 读入三个点的坐标算出三条边长，先判断能否构成三角形；能则依次判断等边、等腰直角、等腰、直角、普通。 |
+| [ex04_hundred_chickens/](ex04_hundred_chickens/) | 百钱百鸡 | 公鸡 5 钱、母鸡 3 钱、小鸡 1 钱 3 只，100 钱买 100 只。 |
 
-## 涉及知识点
+## 本周知识点
 
-- `while` 循环、`for` 循环、二重嵌套循环穷举
+- `for` / `while` 循环与循环变量的更新
 - 取余取整拆位：`n%10`、`n/10`
-- 多重 `if` / `else if` 分支
-- 浮点误差处理：用 `|a-b| < 0.00001` 代替 `a == b`
-- `math.h` 的 `sqrt`，以及用边长平方关系判断直角三角形
+- 二重循环穷举
+- 浮点容差比较 `fabs(a-b) < 1e-5`
+- 标志变量与分支嵌套
 
 ## 如何编译运行
 
-```sh
-cd /home/lei/projects/c-playground
-gcc week03/00100_reverse_digits.c -o /tmp/revdig && /tmp/revdig
-gcc week03/00130_narcissistic_numbers.c -o /tmp/narc && /tmp/narc
-gcc week03/00132_triangle_classify.c -o /tmp/tricls -lm && /tmp/tricls
-gcc week03/00134_hundred_chickens.c -o /tmp/chick && /tmp/chick
+```bash
+cd weekXX/exNN_xxx
+gcc main.c -o main -Wall -Wextra
+./main
 ```
-
-`00132` 用到 `sqrt`，需要加 `-lm`。
 
 ## 遇到的问题 / 收获
 
