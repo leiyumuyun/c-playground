@@ -3,7 +3,7 @@
 */ 
 #include<stdio.h>
 int main(){
-	int a,b,c;
+	int a,b;
 	scanf("%d",&a);
 	for(b=0;a>=1;a=a/10){
 		b=a%10;
