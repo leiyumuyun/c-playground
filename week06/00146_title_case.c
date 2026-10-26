@@ -3,10 +3,16 @@
 */ 
 #include<stdio.h>
 int main(){
-	char str[1024],ch;
+	char str[1024];
 	int i,flag;
 	flag=1;
-	gets(str);
+	fgets(str,sizeof str,stdin);
+	for(i=0;str[i]!='\0';i++){
+		if(str[i]=='\n'){
+			str[i]='\0';
+			break;
+		}
+	}
 	for(i=0;str[i]!='\0';i++){
 		if(str[i]==' '){
 			flag=1;
@@ -21,4 +27,5 @@ int main(){
 		}
 	}
 	printf("%s\n",str);
+	return 0;
 }
