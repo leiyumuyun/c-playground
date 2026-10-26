@@ -1,45 +1,39 @@
 # Week 04 — 循环进阶与函数
 
-## 作业内容
+上课日期：2026-10-08
 
-本周作业量最大，覆盖位运算打印二进制、宽度占位符画图案、四则运算计算器，以及四个数值计算题：级数求 e、泰勒级数求 e^x、质因数分解、二分法求方程根。数值题都靠循环里的精度判断或递推来收敛。
+本周共 8 个作业，每个作业一个子目录，源码统一叫 `main.c`，编译运行方法见各子目录的 `README.md`。
 
-| 文件 | 功能 | 输入 → 输出 |
+## 作业列表
+
+| 目录 | 作业 | 内容 |
 |---|---|---|
-| `00111_char_to_binary.c` | 读入一个字符，用 `(c>>i)&1` 从高位到低位打印它的 8 位二进制 | 字符 → 8 位 0/1 |
-| `00122_asterisk_hourglass.c` | 用 `printf("%*c", n, ' ')` 的宽度占位符控制空格数，打印星号沙漏/菱形轮廓 | 边长 n → 星号图案 |
-| `00131_digits_breakdown.c` | 取余取整把十进制数逐位分离，每位以 `d*` 形式输出 | 整数 → 各位数字 |
-| `00133_simple_calculator.c` | 读 `数 运算符 数`，按 `+ - * /` 计算，校验非法运算符与除数为 0，结果保留两位小数 | 表达式 → 结果或 `Wrong input` |
-| `00136_e_series.c` | 级数求 `e = Σ 1/n!`，当项小于 `1e-6` 时停止累加 | 无输入 → e（`%.3f`） |
-| `00137_exp_series.c` | 用泰勒级数求 `e^x`，递推项 `tmp = tmp*x/n`，项小于 `1e-6` 停止 | x → e^x（`%.3f`） |
-| `00138_prime_factorization.c` | 从 2 起试除做质因数分解，按 `n=a*b*c` 的形式输出 | 整数 → 分解式 |
-| `00139_bisection_root.c` | 定义 `double f(double x)`，用二分法求 `x^3-x^2-1=0` 在 [0,3] 的根，区间小于 `0.00001` 停止 | 无输入 → 根的近似值（`%.5f`） |
+| [ex01_char_to_binary/](ex01_char_to_binary/) | 字符转 8 位二进制 | 读入一个字符，从第 7 位到第 0 位逐位取出 `(c>>i)&1` 并打印，得到这个字符的 8 位二进制表示。 |
+| [ex02_asterisk_hourglass/](ex02_asterisk_hourglass/) | 星号沙漏图形 | 读入 n，先打一行 `2n-1` 个带间隔的星号作为上边缘，再用 n-1 行画出向内收缩的轮廓，靠 `%*c` 按行算出的宽度做缩进。 |
+| [ex03_digits_breakdown/](ex03_digits_breakdown/) | 数位分解 | 读入一个整数，用 `while` 从低位开始把每一位存进数组，再从最高位往下、跳过多余的 0，按 `1*2*3*` 的格式打印每一位数字。 |
+| [ex04_simple_calculator/](ex04_simple_calculator/) | 简易四则运算器 | 读入「数 运算符 数」，按运算符分支做加减乘除，除法前检查除数是否为 0，运算符不认识或除零都输出 `Wrong input`。 |
+| [ex05_e_series/](ex05_e_series/) | 级数求 e | 从 1 开始逐项累加 `1/n!`，用 `q=q/n` 递推下一项（不必每次重算阶乘），当 `q < 1e-6` 时停止，输出 e 的近似值。 |
+| [ex06_exp_series/](ex06_exp_series/) | 级数求 e^x | 读入 x，从 1 开始累加 `x^n/n!`，用 `tmp=tmp*x/n` 递推每一项，当 `tmp < 1e-6` 时停止。 |
+| [ex07_prime_factorization/](ex07_prime_factorization/) | 质因数分解 | 读入 n，从 2 开始试除，能除尽就把因子收进数组并让 n 除掉它，除不尽才 `i++`；循环条件是 `i*i<=tmp`，最后若 n>1 它本身也是因子。 |
+| [ex08_bisection_root/](ex08_bisection_root/) | 二分法求根 | 对 `f(x)=x³-x²-1` 在区间 `[0,3]` 上二分：每次取中点看符号，把区间缩到含根的一半，直到区间长度小于 `1e-5`，输出中点。 |
 
-## 涉及知识点
+## 本周知识点
 
-- 位运算：右移 `>>` 与按位与 `&` 提取二进制位
-- `printf` 宽度占位符 `%*c`（宽度由参数给出）
-- `while` 循环 + 精度阈值 `1e-6` 控制级数收敛
-- 级数项的递推构造（`q=q/n`、`tmp=tmp*x/n`），`double` 精度
-- 函数定义与调用：`double f(double x)` 把被求根的函数独立出来
-- 二分法：靠 `f(low)*f(mid) < 0` 判断根在哪半边
-- 试除法求质因数、除零保护、`%.2f` / `%.3f` / `%.5f` 输出
+- 位运算 `>>` 与 `&`
+- `printf("%*c", w, ch)` 用变量控制字段宽度
+- 数组与下标，跳过前导 0
+- `scanf` 混合读入浮点与字符
+- 递推式求级数（`q=q/n`、`tmp=tmp*x/n`）
+- 试除法与 `i*i<=tmp` 边界
+- 独立函数 + 二分法求根
 
 ## 如何编译运行
 
-```sh
-cd /home/lei/projects/c-playground
-gcc week04/00111_char_to_binary.c -o /tmp/c2bin && /tmp/c2bin
-gcc week04/00122_asterisk_hourglass.c -o /tmp/hourglass && /tmp/hourglass
-gcc week04/00131_digits_breakdown.c -o /tmp/digits && /tmp/digits
-gcc week04/00133_simple_calculator.c -o /tmp/calc && /tmp/calc
-gcc week04/00136_e_series.c -o /tmp/eseries && /tmp/eseries
-gcc week04/00137_exp_series.c -o /tmp/exp && /tmp/exp
-gcc week04/00138_prime_factorization.c -o /tmp/factor && /tmp/factor
-gcc week04/00139_bisection_root.c -o /tmp/bisect && /tmp/bisect
+```bash
+cd weekXX/exNN_xxx
+gcc main.c -o main -Wall -Wextra
+./main
 ```
-
-本目录不依赖 `math.h`，无需 `-lm`。
 
 ## 遇到的问题 / 收获
 
