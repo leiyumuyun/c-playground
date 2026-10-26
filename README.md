@@ -26,4 +26,4 @@ gcc week01/00100_hello_frame.c -o /tmp/a.out && /tmp/a.out
 ```
 
 - 用到 `math.h`（如 `sqrt`）的文件需要额外加 `-lm`，各周 README 内已注明。
-- 使用已废弃 `gets` 的两个老文件（`week06/00146_title_case.c`、`week06/00150_trim_spaces.c`）在 gcc 15 / glibc 2.44 下需加 `-std=gnu89` 才能编译，详见 [week06/README.md](week06/README.md)。
+- 全部 30 个文件在 gcc 15 / glibc 2.44 下用 `gcc -Wall -Wextra` 即可零警告编译（用到 `sqrt` 的加 `-lm`），不需要额外的 `-std=` 参数。
