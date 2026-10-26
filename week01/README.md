@@ -1,38 +1,34 @@
 # Week 01 — 基础输入输出与表达式
 
-## 作业内容
+上课日期：2026-09-10
 
-本周从最基础的 `scanf` / `printf` 开始：先做格式化输出和星号边框，再用表达式求三角形面积、等差数列和、华氏转摄氏，最后引入自定义函数完成三数比大小。
+本周共 5 个作业，每个作业一个子目录，源码统一叫 `main.c`，编译运行方法见各子目录的 `README.md`。
 
-| 文件 | 功能 | 输入 → 输出 |
+## 作业列表
+
+| 目录 | 作业 | 内容 |
 |---|---|---|
-| `00100_hello_frame.c` | 读入一个名字，用 `strlen` 算出内容宽度后打印上下两条星号边框，中间是 `Hello <name>!` | 名字 → 边框 + 问候 |
-| `00101_max_of_three.c` | 定义 `max(a,b,c)` 函数求三个整数中的最大值，输入用逗号分隔 | `x,y,z` → `max=` |
-| `00102_triangle_area.c` | 底乘高除以 2 求三角形面积，全程整数运算 | `a b` → 面积 |
-| `00103_series_sum.c` | 用等差求和闭式 `sum=a*c+c*(c-1)*b/2` 直接算结果（首项 a、公差 b、项数 c） | `a b c` → `sum` |
-| `00106_fahrenheit_to_celsius.c` | 华氏温度转摄氏温度，`5.0/9.0*(a-32.0)` | 华氏 → 摄氏（`%.2f`） |
+| [ex01_hello_frame/](ex01_hello_frame/) | 星号边框问候 | 读入一个名字，用 `strlen` 算出边框需要多长，先打一行 `*`，再打居中的 `Hello <name>!`，最后再打一行 `*`。 |
+| [ex02_max_of_three/](ex02_max_of_three/) | 三数最大值（自定义函数） | 定义 `max(a,b,c)` 用 `if` / `else if` 比较出三者最大值，`main` 读入三个整数后调用它并打印 `max=...`。 |
+| [ex03_triangle_area/](ex03_triangle_area/) | 直角三角形面积 | 读入两个整数作为直角边，用 `a*b/2` 求面积并输出。 |
+| [ex04_series_sum/](ex04_series_sum/) | 等差数列求和 | 输入首项、公差、项数，直接套公式 `a*c + c*(c-1)*b/2` 算出前 c 项之和，不写循环。 |
+| [ex05_fahrenheit_to_celsius/](ex05_fahrenheit_to_celsius/) | 华氏转摄氏 | 读入华氏温度，按 `5.0/9.0*(a-32.0)` 换算成摄氏温度，保留两位小数输出。 |
 
-## 涉及知识点
+## 本周知识点
 
-- `#include <stdio.h>` / `<string.h>`，`strlen` 求字符串长度
-- `scanf` 格式串，包括 `"%d,%d,%d"` 这种带字面分隔符的写法
-- `printf` 格式化输出：`%d`、`%s`、`%.2f`、`%.3f`
-- 变量类型 `int` / `float`，以及整数除法陷阱（`5/9` 与 `5.0/9.0` 的区别）
-- `for` 循环做定次重复输出
-- 自定义函数 `int max(int a,int b,int c)` 的定义与调用、`return` 返回值
+- `char` 数组与 `scanf("%s")` 读一个不含空格的字符串
+- `string.h` 的 `strlen` 求长度
+- `float` 与 `%f` / `%.2f`，以及用 `5.0/9.0` 避免整数除法
+- 自定义函数定义、调用与值传递
+- 整数除法截断，以及用公式代替循环求和
 
 ## 如何编译运行
 
-```sh
-cd /home/lei/projects/c-playground
-gcc week01/00100_hello_frame.c -o /tmp/hello_frame && /tmp/hello_frame
-gcc week01/00101_max_of_three.c -o /tmp/max3 && /tmp/max3
-gcc week01/00102_triangle_area.c -o /tmp/tri_area && /tmp/tri_area
-gcc week01/00103_series_sum.c -o /tmp/series && /tmp/series
-gcc week01/00106_fahrenheit_to_celsius.c -o /tmp/f2c && /tmp/f2c
+```bash
+cd weekXX/exNN_xxx
+gcc main.c -o main -Wall -Wextra
+./main
 ```
-
-本目录不依赖 `math.h`，无需 `-lm`。
 
 ## 遇到的问题 / 收获
 
