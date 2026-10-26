@@ -1,33 +1,31 @@
 # Week 02 — 分支与数学函数
 
-## 作业内容
+上课日期：2026-09-17
 
-本周开始用 `if` / `else` 处理分支：先写浮点数绝对值，再引入 `math.h` 的 `sqrt` 算两点间距离，最后用海伦公式算三角形面积并先判断三边能否构成三角形。
+本周共 3 个作业，每个作业一个子目录，源码统一叫 `main.c`，编译运行方法见各子目录的 `README.md`。
 
-| 文件 | 功能 | 输入 → 输出 |
+## 作业列表
+
+| 目录 | 作业 | 内容 |
 |---|---|---|
-| `00107_absolute_value.c` | `if (a>=0)` 判断后求浮点数绝对值，输出三位小数 | 一个浮点数 → 绝对值 |
-| `00108_point_distance.c` | 由两点坐标算欧氏距离，`sqrt((x2-x1)^2+(y2-y1)^2)` | 4 个数 → 距离（`%.2f`） |
-| `00109_triangle_by_heron.c` | 先用三边不等式判断能否成三角形，能则用海伦公式算面积，否则输出 `输入错误` | 3 条边 → 面积或提示 |
+| [ex01_absolute_value/](ex01_absolute_value/) | 浮点数绝对值 | 读入一个浮点数，用 `if (a>=0)` 判断：非负直接输出，负数输出它的相反数，结果保留三位小数。 |
+| [ex02_point_distance/](ex02_point_distance/) | 两点间距离 | 读入两个点的坐标，用 `sqrt((x2-x1)^2 + (y2-y1)^2)` 求欧氏距离，输出两位小数。 |
+| [ex03_triangle_by_heron/](ex03_triangle_by_heron/) | 海伦公式求三角形面积 | 读入三条边，先用三边不等式判断能否构成三角形：能则用海伦公式 `sqrt(l*(l-a)*(l-b)*(l-c))` 算面积，否则输出 `输入错误`。 |
 
-## 涉及知识点
+## 本周知识点
 
-- `if` / `else` 单分支与双分支，`&&` 逻辑与组合多个判断条件
+- `if` / `else` 双分支，`&&` 组合多个条件
 - `math.h` 的 `sqrt`，链接时需要 `-lm`
-- 浮点格式化输出 `%.2f` / `%.3f`
-- 用三边不等式 `a+b>c && a+c>b && b+c>a` 做合法性校验
-- 中文字符串常量在 `printf` 里直接输出（源文件为 GBK 编码）
+- 浮点格式化 `%.2f` / `%.3f`
+- 用三边不等式做输入合法性校验
 
 ## 如何编译运行
 
-```sh
-cd /home/lei/projects/c-playground
-gcc week02/00107_absolute_value.c -o /tmp/absval && /tmp/absval
-gcc week02/00108_point_distance.c -o /tmp/dist -lm && /tmp/dist
-gcc week02/00109_triangle_by_heron.c -o /tmp/heron -lm && /tmp/heron
+```bash
+cd weekXX/exNN_xxx
+gcc main.c -o main -Wall -Wextra
+./main
 ```
-
-`00108`、`00109` 用到 `sqrt`，必须加 `-lm`。
 
 ## 遇到的问题 / 收获
 
