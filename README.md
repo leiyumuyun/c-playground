@@ -12,6 +12,7 @@ C 语言入门课程的作业代码合集：按上课日期归档为六周，每
 | Week 04 | 循环进阶与函数 | 2026-10-08 | [week04/](week04/README.md) |
 | Week 05 | 数组 | 2026-10-15 | [week05/](week05/README.md) |
 | Week 06 | 字符串与二维数组 | 2026-10-22 | [week06/](week06/README.md) |
+| Week 08 | 二维数组与动态规划 | 2026-10-29 | [week08/](week08/README.md) |
 
 ## 目录结构
 
