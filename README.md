@@ -1,6 +1,6 @@
 # C Playground
 
-C 语言入门课程的作业代码合集：按上课日期归档为六周，每周一个目录，**每周里每个作业一个子目录**（`exNN_简述/`），源码统一命名为 `main.c`，配一份说明这道题做什么、用到哪些 C 特性、以及怎么编译运行的 `README.md`。
+C 语言入门课程的作业代码合集：按上课日期分周归档，每周一个目录，**每周里每个作业一个子目录**（`exNN_简述/`），源码统一命名为 `main.c`，配一份说明这道题做什么、用到哪些 C 特性、以及怎么编译运行的 `README.md`。
 
 ## 每周目录
 
@@ -13,6 +13,7 @@ C 语言入门课程的作业代码合集：按上课日期归档为六周，每
 | Week 05 | 数组 | 2026-10-15 | [week05/](week05/README.md) |
 | Week 06 | 字符串与二维数组 | 2026-10-22 | [week06/](week06/README.md) |
 | Week 08 | 二维数组与动态规划 | 2026-10-29 | [week08/](week08/README.md) |
+| Week 09 | 递归与随机数 | 2026-11-05 | [week09/](week09/README.md) |
 
 ## 目录结构
 
@@ -37,5 +38,5 @@ gcc main.c -o main -Wall -Wextra
 ```
 
 - 用到 `math.h`（如 `sqrt`）的三个作业需要额外加 `-lm`：`week02/ex02_point_distance`、`week02/ex03_triangle_by_heron`、`week03/ex03_triangle_classify`。
-- 全部 30 个作业在 gcc 15 / glibc 2.44 下用 `-Wall -Wextra` 零警告编译通过。
+- 各作业在 gcc 下用 `-Wall -Wextra` 零警告编译通过。
 - 编译产物 `main` 已在 `.gitignore` 里，不会误提交。
